@@ -1,10 +1,13 @@
 public class AplikasiTodolist {
 
+  //model berfungsi untuk menampung data todolist
   public static String[] model = new String[10];
 
+  //menggunakan scanner agar user bisa melakukan input di terminal
   public static java.util.Scanner scanner = new java.util.Scanner(System.in);
 
   public static void main(String[] args) {
+    //panggil method viewShowTodoList
     viewShowTodoList();
   }
 
@@ -36,6 +39,7 @@ public class AplikasiTodolist {
     // cek apakah model penuh?
     var isFull = true;
     for (int i = 0; i < model.length; i++) {
+      //apakah di dalam array ada nilai yang null
       if (model[i] == null) {
         // model masih ada yang kosong
         isFull = false;
@@ -71,18 +75,19 @@ public class AplikasiTodolist {
   }
 
   /**
-   * Mehapus todo dari list
+   * Menghapus todo dari list
    */
   public static boolean removeTodoList(Integer number) {
+    //cek apakah number yang dihapus melebihi panjang array
     if ((number - 1) >= model.length) {
       return false;
-    } else if (model[number - 1] == null) {
+    } else if (model[number - 1] == null) { //cek apakah data yang ingin dihapus udah null atau belum
       return false;
     } else {
       for (int i = (number - 1); i < model.length; i++) {
-        if (i == (model.length - 1)) {
+        if (i == (model.length - 1)) { //jika data yang ingin dihapus itu ada di array terakhir, maka tinggal set aja datanya jd null
           model[i] = null;
-        } else {
+        } else {//jika tidak, maka data di sebelah data yang dihapus digeser ke kiri
           model[i] = model[i + 1];
         }
       }
